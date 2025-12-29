@@ -1,21 +1,19 @@
-const text = "Full Stack Developer";
-const typingElement = document.querySelector(".typewriter");
-let index = 0;
+// Set current year in footer
+document.getElementById('year').textContent = new Date().getFullYear();
 
-function typeWriter() {
-    if (index < text.length) {
-        typingElement.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 100); // Speed of typing
-    } else {
-        // Optional: Erase and restart (Loop)
-        setTimeout(() => {
-            typingElement.innerHTML = "";
-            index = 0;
-            typeWriter();
-        }, 3000); // Wait 3 seconds before restarting
-    }
-}
+// Dark mode toggle
+const toggleBtn = document.getElementById('theme-toggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  toggleBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+});
 
-// Start animation when page loads
-window.onload = typeWriter;
+// Smooth scroll for nav links
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
