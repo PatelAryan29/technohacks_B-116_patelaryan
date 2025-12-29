@@ -1,1 +1,0 @@
-# technohacks_B-116_patelaryan
